@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,7 +31,6 @@ import com.example.bookfutsal.komponen.NormalTextComponent
 import com.example.bookfutsal.komponen.PasswordTextFieldComponent
 import com.example.bookfutsal.navigation.BookOnlineFutsalAppRouter
 import com.example.bookfutsal.navigation.Halaman
-import androidx.compose.material.CircularProgressIndicator
 
 @Composable
 fun HalamanSignUp(signupViewModel: SignupViewModel = viewModel()) {
@@ -62,21 +62,36 @@ fun HalamanSignUp(signupViewModel: SignupViewModel = viewModel()) {
                 )
                 MyTextFieldComponent(
                     labelValue = stringResource(id = R.string.last_name),
-                    painterResource(id = R.drawable.baseline_person_2_24)
+                    painterResource(id = R.drawable.baseline_person_2_24),
+                    onTextChanged = {
+                        signupViewModel.onEvent(SignupUIEvent.LastNameChanged(it))
+                    },
+                    errorStatus = signupViewModel.registrationUIState.value.lastNameError
                 )
                 MyTextFieldComponent(
                     labelValue = stringResource(id = R.string.email),
-                    painterResource(id = R.drawable.baseline_email_24)
+                    painterResource(id = R.drawable.baseline_email_24),
+                    onTextChanged = {
+                        signupViewModel.onEvent(SignupUIEvent.EmailChanged(it))
+                    },
+                    errorStatus = signupViewModel.registrationUIState.value.emailError
                 )
                 PasswordTextFieldComponent(
                     labelValue = stringResource(id = R.string.password),
-                    painterResource(id = R.drawable.baseline_lock_24)
+                    painterResource(id = R.drawable.baseline_lock_24),
+                    onTextSelected = {
+                        signupViewModel.onEvent(SignupUIEvent.PasswordChanged(it))
+                    },
+                    errorStatus = signupViewModel.registrationUIState.value.passwordError
                 )
                 CheckboxComponent(value = stringResource(id = R.string.terms_and_conditions),
                     onTextSelected = {
                         BookOnlineFutsalAppRouter.navigateTo(Halaman.HalamanTermsAndConditions)
-
-                    })
+                    },
+                    onCheckedChange = {
+                        signupViewModel.onEvent(SignupUIEvent.PrivacyPolicyCheckBoxClicked(it))
+                    }
+                    )
 
                 Spacer(modifier = Modifier.height(80.dp))
 

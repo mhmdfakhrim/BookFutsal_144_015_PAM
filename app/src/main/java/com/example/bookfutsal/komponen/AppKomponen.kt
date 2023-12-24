@@ -118,7 +118,7 @@ fun MyTextFieldComponent(
         mutableStateOf("")
     }
     val localFocusManager = LocalFocusManager.current
-    
+
     OutlinedTextField(
         modifier = Modifier
             .fillMaxWidth()
@@ -129,29 +129,26 @@ fun MyTextFieldComponent(
             focusedBorderColor = Primary,
             focusedLabelColor = Primary,
             cursorColor = Primary,
-
-
-
         ),
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
         singleLine = true,
         maxLines = 1,
         onValueChange = {
             textValue.value = it
-
+            onTextChanged(it)
         },
         leadingIcon = {
             Icon(painter = painterResource,
                 contentDescription = "")},
-
     )
-
-
-
 }
 
 @Composable
-fun PasswordTextFieldComponent(labelValue:String,painterResource: Painter){
+fun PasswordTextFieldComponent(
+    labelValue:String,painterResource: Painter,
+    onTextSelected: (String) -> Unit,
+    errorStatus: Boolean = false
+){
     val localFocusManager = LocalFocusManager.current
     val password = remember {
         mutableStateOf("")
@@ -164,23 +161,23 @@ fun PasswordTextFieldComponent(labelValue:String,painterResource: Painter){
             .fillMaxWidth()
             .clip(componentShapes.small),
         label = { Text(text = labelValue) },
-        value = password.value,  // Use it once
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = Primary,
             focusedLabelColor = Primary,
             cursorColor = Primary,
-
-
             ),
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, imeAction = ImeAction.Done),
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Password, imeAction = ImeAction.Done),
         singleLine = true,
         keyboardActions = KeyboardActions {
                                           localFocusManager.clearFocus()
 
         },
         maxLines = 1,
+        value = password.value,
         onValueChange = {
             password.value = it
+            onTextSelected(it)
         },
         leadingIcon = {
             Icon(painter = painterResource,
@@ -204,16 +201,20 @@ fun PasswordTextFieldComponent(labelValue:String,painterResource: Painter){
             }
 
         },
-        visualTransformation = if (passwordVisible.value) VisualTransformation.None else PasswordVisualTransformation()
+        visualTransformation = if (passwordVisible.value) VisualTransformation.None else PasswordVisualTransformation(),
+        isError = !errorStatus
     )
 }
 
 @Composable
-fun CheckboxComponent(value: String , onTextSelected : (String) -> Unit){
+fun CheckboxComponent(
+    value: String ,
+    onTextSelected : (String) -> Unit,
+    onCheckedChange: (Boolean) -> Unit
+){
     Row(modifier = Modifier
         .fillMaxWidth()
-        .heightIn(56.dp)
-        .padding(16.dp),
+        .heightIn(56.dp),
         verticalAlignment = Alignment.CenterVertically,
     ){
         val checkedState = remember {
@@ -223,12 +224,10 @@ fun CheckboxComponent(value: String , onTextSelected : (String) -> Unit){
             checked = checkedState.value,
             onCheckedChange = {
                 checkedState.value != checkedState.value
+                onCheckedChange.invoke(it)
             })
         ClickableTextComponent(value = value, onTextSelected)
     }
-
-
-
 }
 
 @Composable

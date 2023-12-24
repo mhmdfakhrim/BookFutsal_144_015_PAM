@@ -27,7 +27,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(homeViewModel = HomeViewModel = viewModel()) {
+fun HalamanHome(homeViewModel = HomeViewModel = viewModel()) {
 
     val scaffoldState = rememberScaffoldState()
     val coroutineScope = rememberCoroutineScope()
@@ -77,6 +77,6 @@ fun HomeScreen(homeViewModel = HomeViewModel = viewModel()) {
 
 @Preview
 @Composable
-fun HomeScreenPreview() {
-    HomeScreen()
+fun HalamanHomePreview() {
+    HalamanHome()
 }
