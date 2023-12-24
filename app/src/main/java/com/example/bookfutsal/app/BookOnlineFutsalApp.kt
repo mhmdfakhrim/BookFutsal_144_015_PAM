@@ -29,7 +29,7 @@ fun BookOnlineFutsalApp(homeViewModel: HomeViewModel = viewModel()){
             BookOnlineFutsalAppRouter.navigateTo(Halaman.HalamanHome)
         }
 
-        Crossfade(targetState = BookOnlineFutsalAppRouter.currentScreen) {currentState->
+        Crossfade(targetState = BookOnlineFutsalAppRouter.currentScreen, label = "") { currentState->
             when(currentState.value){
                 is Halaman.HalamanSignUp -> {
                     HalamanSignUp()
