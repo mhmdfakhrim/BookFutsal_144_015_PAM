@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "308182499023",
+    "project_id": "bookfutsal-96ee1",
+    "storage_bucket": "bookfutsal-96ee1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308182499023:android:a53bee83b5dcea966d81ba",
+        "android_client_info": {
+          "package_name": "com.example.bookfutsal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSdAvqXe1zNQQ8_SPmIBW1KgcF1TWnWro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
