@@ -3,7 +3,7 @@ package com.example.bookfutsal.data.login
 import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.example.bookfutsal.data.rules.Validator
+import com.example.bookfutsal.data.rules.ValidatorLogin
 import com.example.bookfutsal.navigation.BookOnlineFutsalAppRouter
 import com.example.bookfutsal.navigation.Halaman
 import com.google.firebase.auth.FirebaseAuth
@@ -42,12 +42,12 @@ class LoginViewModel : ViewModel() {
     }
 
     private fun validateLoginUIDataWithRules() {
-        val emailResult = Validator.validateEmail(
+        val emailResult = ValidatorLogin.validateEmail(
             email = loginUIState.value.email
         )
 
 
-        val passwordResult = Validator.validatePassword(
+        val passwordResult = ValidatorLogin.validatePassword(
             password = loginUIState.value.password
         )
 
