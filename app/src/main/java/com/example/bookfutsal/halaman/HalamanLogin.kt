@@ -34,6 +34,7 @@ import com.example.bookfutsal.navigation.Halaman
 import com.example.bookfutsal.navigation.SystemBackButtonHandler
 
 
+
 @Composable
 fun HalamanLogin(loginViewModel: LoginViewModel = viewModel()) {
 
@@ -78,7 +79,11 @@ fun HalamanLogin(loginViewModel: LoginViewModel = viewModel()) {
                 Spacer(modifier = Modifier.height(40.dp))
                 ButtonComponent(
                     value = stringResource(id = R.string.login),
-                    onButtonClicked = { /*TODO*/ })
+                    onButtonClicked = {
+                        loginViewModel.onEvent(LoginUIEvent.LoginButtonClicked)
+                    },
+                    isEnabled = loginViewModel.allValidationsPassed.value
+                )
 
                 Spacer(modifier = Modifier.height(20.dp))
 
@@ -97,9 +102,9 @@ fun HalamanLogin(loginViewModel: LoginViewModel = viewModel()) {
         BookOnlineFutsalAppRouter.navigateTo(Halaman.HalamanSignUp)
     }
 }
-
 @Preview
 @Composable
 fun HalamanLoginPreview(){
     HalamanLogin()
 }
+

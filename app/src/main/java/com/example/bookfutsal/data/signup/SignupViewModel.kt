@@ -140,7 +140,7 @@ class SignupViewModel : ViewModel() {
 
                 signUpInProgress.value = false
                 if (it.isSuccessful) {
-                    BookOnlineFutsalAppRouter.navigateTo(Halaman.HalamanHome)
+                    BookOnlineFutsalAppRouter.navigateTo(Halaman.HalamanLogin)
                 }
             }
             .addOnFailureListener {

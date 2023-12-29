@@ -15,7 +15,19 @@
     <string name="login">Login</string>
     <string name="or">or</string>
     <string name="go_to_login">Already have an account? Login</string>
-
+    <string name="pesan_lapangan">Pesan Lapangan</string>
+    <string name="isi_biodata">Biodata Pemesanan</string>
+    <string name="nama">Nama</string>
+    <string name="alamat">Alamat</string>
+    <string name="telpon">Telpon</string>
+    <string name="selanjutnya">Next</string>
+    <string name="pilih_lapangan">Pilih Lapangan 1, 2, atau 3</string>
+    <string name="jumlah_jam">Jumlah Jam</string>
+    <string name="id_pemesanan">ID Pemesanan</string>
+    <string name="pemesanan">Pemesanan</string>
+    <string name="pilih_jam">Telpon</string>
+    <string name="pilih_tanggal">Pilih Tanggal</string>
+    <string name="konfirmasi">Konfirmasi</string>
     <string name="forgot_password">Forgot your password?</string>
     <string name="home">Home</string>
     <string name="logout">Logout</string>

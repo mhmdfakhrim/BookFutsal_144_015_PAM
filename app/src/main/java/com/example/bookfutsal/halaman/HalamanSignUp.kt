@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.bookfutsal.R
@@ -32,8 +31,11 @@ import com.example.bookfutsal.komponen.PasswordTextFieldComponent
 import com.example.bookfutsal.navigation.BookOnlineFutsalAppRouter
 import com.example.bookfutsal.navigation.Halaman
 
+
 @Composable
-fun HalamanSignUp(signupViewModel: SignupViewModel = viewModel()) {
+fun HalamanSignUp(
+
+    signupViewModel: SignupViewModel = viewModel()) {
 
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -119,8 +121,3 @@ fun HalamanSignUp(signupViewModel: SignupViewModel = viewModel()) {
     }
 }
 
-@Preview
-@Composable
-fun DefaultPreviewOfHalamanSignUp(){
-    HalamanSignUp()
-}

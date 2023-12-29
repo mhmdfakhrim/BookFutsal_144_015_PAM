@@ -8,6 +8,10 @@ sealed class Halaman {
     object HalamanTermsAndConditions : Halaman()
     object HalamanLogin : Halaman()
     object HalamanHome : Halaman()
+    object HalamanPemesanan : Halaman()
+    object HalamanLihatPemesanan : Halaman()
+
+
 }
 
 object BookOnlineFutsalAppRouter {
@@ -17,3 +21,4 @@ object BookOnlineFutsalAppRouter {
         currentScreen.value = destination
     }
 }
+

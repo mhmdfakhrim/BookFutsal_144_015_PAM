@@ -12,6 +12,8 @@ import com.example.bookfutsal.navigation.BookOnlineFutsalAppRouter
 import com.example.bookfutsal.navigation.Halaman
 import com.google.firebase.auth.FirebaseAuth
 
+
+
 class HomeViewModel : ViewModel() {
 
     private val TAG = HomeViewModel::class.simpleName
@@ -36,6 +38,7 @@ class HomeViewModel : ViewModel() {
             itemId = "favoriteScreen"
         )
     )
+
 
     val isUserLoggedIn: MutableLiveData<Boolean> = MutableLiveData()
 
@@ -77,6 +80,8 @@ class HomeViewModel : ViewModel() {
                 emailId.value = email
             }
         }
+
+
     }
 
 }

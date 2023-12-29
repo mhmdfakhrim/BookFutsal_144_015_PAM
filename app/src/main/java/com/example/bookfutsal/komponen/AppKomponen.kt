@@ -32,8 +32,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -117,6 +120,7 @@ fun MyTextFieldComponent(
     val textValue = remember {
         mutableStateOf("")
     }
+
     val localFocusManager = LocalFocusManager.current
 
     OutlinedTextField(
@@ -124,7 +128,6 @@ fun MyTextFieldComponent(
             .fillMaxWidth()
             .clip(componentShapes.small),
         label = { Text(text = labelValue) },
-        value = textValue.value,  // Use it once
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = Primary,
             focusedLabelColor = Primary,
@@ -133,15 +136,275 @@ fun MyTextFieldComponent(
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
         singleLine = true,
         maxLines = 1,
+        value = textValue.value,
         onValueChange = {
+
             textValue.value = it
             onTextChanged(it)
         },
         leadingIcon = {
             Icon(painter = painterResource,
-                contentDescription = "")},
+                contentDescription = "")
+        },
+        isError = !errorStatus
     )
 }
+
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MyTextIdPemesananFieldComponent(
+    labelValue:String,
+    painterResource: Painter,
+    onTextChanged: (String) -> Unit,
+    errorStatus: Boolean = false
+){
+
+    var pemesananID: String by remember { mutableStateOf("") }
+
+
+
+    OutlinedTextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(componentShapes.small),
+        label = { Text(text = labelValue) },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = Primary,
+            focusedLabelColor = Primary,
+            cursorColor = Primary,
+        ),
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+        singleLine = true,
+        maxLines = 1,
+        value = pemesananID,
+        onValueChange = {
+            onTextChanged(it)
+            pemesananID = it
+
+        },
+        leadingIcon = {
+            Icon(painter = painterResource,
+                contentDescription = "")
+        },
+        isError = !errorStatus
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MyTextNameFieldComponent(
+    labelValue:String,
+    painterResource: Painter,
+    onTextChanged: (String) -> Unit,
+    errorStatus: Boolean = false
+){
+
+
+    var nama: String by remember { mutableStateOf("") }
+
+    OutlinedTextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(componentShapes.small),
+        label = { Text(text = labelValue) },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = Primary,
+            focusedLabelColor = Primary,
+            cursorColor = Primary,
+        ),
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+        singleLine = true,
+        maxLines = 1,
+        value = nama,
+        onValueChange = {
+            onTextChanged(it)
+            nama = it
+
+        },
+        leadingIcon = {
+            Icon(painter = painterResource,
+                contentDescription = "")
+        },
+        isError = !errorStatus
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MyTextAlamatFieldComponent(
+    labelValue:String,
+    painterResource: Painter,
+    onTextChanged: (String) -> Unit,
+    errorStatus: Boolean = false
+){
+
+    var alamat: String by remember { mutableStateOf("") }
+
+
+
+    OutlinedTextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(componentShapes.small),
+        label = { Text(text = labelValue) },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = Primary,
+            focusedLabelColor = Primary,
+            cursorColor = Primary,
+        ),
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+        singleLine = true,
+        maxLines = 1,
+        value = alamat,
+        onValueChange = {
+            onTextChanged(it)
+            alamat = it
+
+        },
+        leadingIcon = {
+            Icon(painter = painterResource,
+                contentDescription = "")
+        },
+        isError = !errorStatus
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MyTextTelponFieldComponent(
+    labelValue:String,
+    painterResource: Painter,
+    onTextChanged: (String) -> Unit,
+    errorStatus: Boolean = false
+){
+
+
+    var telpon: String by remember { mutableStateOf("") }
+    var telponInt: Int by remember { mutableIntStateOf(0) }
+
+
+
+    OutlinedTextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(componentShapes.small),
+        label = { Text(text = labelValue) },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = Primary,
+            focusedLabelColor = Primary,
+            cursorColor = Primary,
+        ),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
+        singleLine = true,
+        maxLines = 1,
+        value = telpon,
+        onValueChange = {
+            onTextChanged(it)
+            telpon = it
+            if (telpon.isNotEmpty()) {
+                telponInt = telpon.toInt()
+            }
+
+        },
+        leadingIcon = {
+            Icon(painter = painterResource,
+                contentDescription = "")
+        },
+        isError = !errorStatus
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MyTextLapanganFieldComponent(
+    labelValue:String,
+    painterResource: Painter,
+    onTextChanged: (String) -> Unit,
+    errorStatus: Boolean = false
+){
+    var lapangan: String by remember { mutableStateOf("") }
+    var lapanganInt: Int by remember { mutableIntStateOf(0) }
+
+
+
+    OutlinedTextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(componentShapes.small),
+        label = { Text(text = labelValue) },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = Primary,
+            focusedLabelColor = Primary,
+            cursorColor = Primary,
+        ),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
+        singleLine = true,
+        maxLines = 1,
+        value = lapangan,
+        onValueChange = {
+            onTextChanged(it)
+            lapangan = it
+            if (lapangan.isNotEmpty()) {
+                lapanganInt = lapangan.toInt()
+            }
+
+        },
+        leadingIcon = {
+            Icon(painter = painterResource,
+                contentDescription = "")
+        },
+        isError = !errorStatus
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MyTextJamFieldComponent(
+    labelValue:String,
+    painterResource: Painter,
+    onTextChanged: (String) -> Unit,
+    errorStatus: Boolean = false
+){
+
+
+    var jam: String by remember { mutableStateOf("") }
+    var jamInt: Int by remember { mutableIntStateOf(0) }
+
+    val localFocusManager = LocalFocusManager.current
+
+    OutlinedTextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(componentShapes.small),
+        label = { Text(text = labelValue) },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = Primary,
+            focusedLabelColor = Primary,
+            cursorColor = Primary,
+        ),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
+        singleLine = true,
+        maxLines = 1,
+        value = jam,
+        onValueChange = {
+            onTextChanged(it)
+            jam = it
+            if (jam.isNotEmpty()) {
+                jamInt = jam.toInt()
+            }
+
+        },
+        leadingIcon = {
+            Icon(painter = painterResource,
+                contentDescription = "")
+        },
+        isError = !errorStatus
+    )
+}
+
+
 
 @Composable
 fun PasswordTextFieldComponent(
@@ -167,7 +430,7 @@ fun PasswordTextFieldComponent(
             cursorColor = Primary,
             ),
         keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Password, imeAction = ImeAction.Done),
+        keyboardType = KeyboardType.Password, imeAction = ImeAction.Done),
         singleLine = true,
         keyboardActions = KeyboardActions {
                                           localFocusManager.clearFocus()
@@ -190,7 +453,7 @@ fun PasswordTextFieldComponent(
                 Icons.Filled.VisibilityOff
             }
 
-            var description = if(passwordVisible.value){
+            val description = if(passwordVisible.value){
                 stringResource(id = R.string.hide_password)
             } else {
                 stringResource(id = R.string.show_password)
@@ -223,7 +486,7 @@ fun CheckboxComponent(
         Checkbox(
             checked = checkedState.value,
             onCheckedChange = {
-                checkedState.value != checkedState.value
+                checkedState.value = !checkedState.value
                 onCheckedChange.invoke(it)
             })
         ClickableTextComponent(value = value, onTextSelected)
@@ -231,7 +494,7 @@ fun CheckboxComponent(
 }
 
 @Composable
-fun ClickableTextComponent(value: String , onTextSelected : (String) -> Unit){
+fun ClickableTextComponent(value: String, onTextSelected: (String) -> Unit){
     val initialText = "By continuing you accept our "
     val privacyPolicyText = "Privacy Policy"
     val andText = " and "
@@ -300,6 +563,8 @@ fun ButtonComponent(value: String, onButtonClicked: () -> Unit, isEnabled: Boole
     }
 }
 
+
+
 @Composable
 fun DividerTextComponent() {
     Row(
@@ -332,10 +597,10 @@ fun DividerTextComponent() {
 }
 
 @Composable
-fun ClickableLoginTextComponent(tryingToLogin:Boolean = true, onTextSelected : (String) -> Unit){
-    val initialText = if(tryingToLogin) "Already have an account? " else "Don't have an account yet? "
+fun ClickableLoginTextComponent(tryingToLogin: Boolean = true, onTextSelected : (String) -> Unit){
+    val initialText = if (tryingToLogin) "Already have an account? " else "Don't have an account yet? "
 
-    val loginText = if(tryingToLogin)"Login" else "Register"
+    val loginText = if (tryingToLogin) "Login" else "Register"
 
     val annotatedString = buildAnnotatedString {
         append(initialText)
@@ -366,8 +631,11 @@ fun ClickableLoginTextComponent(tryingToLogin:Boolean = true, onTextSelected : (
 
                 }
             }
-    })
+    },
+  )
 }
+
+
 
 @Composable
 fun UnderlinedTextComponent(value: String){
@@ -430,6 +698,7 @@ fun AppToolbar(
     )
 }
 
+
 @Composable
 fun NavigationDrawerHeader(value: String?) {
     Box(
@@ -473,7 +742,8 @@ fun NavigationItemRow(item: NavigationItem,
             .fillMaxWidth()
             .clickable {
                 onNavigationItemClicked.invoke(item)
-            }.padding(all = 16.dp)
+            }
+            .padding(all = 16.dp)
     ) {
 
         Icon(
